@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import DashboardPage from '@/components/DashboardPage.vue'
+import LoginForm from '@/components/LoginForm.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/login', component: LoginForm },
+  { path: '/dashboard', component: DashboardPage }
 ]
 
 const router = new VueRouter({
