@@ -24,10 +24,10 @@
           required
         ></b-form-input>
       </b-form-group>
+      <p class="error-message" v-if="error">Неверный логин или пароль!</p>
 
       <b-button type="reset" variant="danger">Отмена</b-button>
       <b-button type="submit" variant="primary" @click="openNextPage()">Войти</b-button>
-      <router-link to="/dashboard">Перейти к Dash</router-link>
     </b-form>
   </div>
 </template>
@@ -41,7 +41,8 @@ export default {
       form: {
         email: '',
         password: ''
-      }
+      },
+      error: false
     }
   },
   methods: {
@@ -49,6 +50,7 @@ export default {
       if ((this.form.email === 'vin@vin.com') && (this.form.password === '123')) {
         this.$router.push('/dashboard')
       }
+      return this.error === true
     }
   }
 }
@@ -65,6 +67,10 @@ form {
 }
 .form-group {
   margin-bottom: 20px;
+}
+.error-message {
+  font-size: 15px;
+  color: red;
 }
 .btn-danger {
   margin-right: 70px;
