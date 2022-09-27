@@ -1,31 +1,21 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">Dashboard</b-navbar-brand>
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown right>
-            <template #button-content>
-              <em>User</em>
-            </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-          </b-nav-item-dropdown>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
+    <dashboard-header></dashboard-header>
+    <dashboard-table></dashboard-table>
   </div>
 </template>
 
 <script>
+import DashboardHeader from '@/components/DashboardHeader'
+import DashboardTable from '@/components/DashboardTable'
 export default {
-  name: 'DashboardPage'
+  name: 'DashboardPage',
+  components: {
+    DashboardHeader,
+    DashboardTable
+  }
 }
 </script>
 
 <style scoped>
-.navbar {
-  padding: 10px 40px;
-  justify-content: space-between;
-}
 </style>

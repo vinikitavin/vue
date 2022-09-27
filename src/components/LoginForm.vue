@@ -14,7 +14,6 @@
           required
         ></b-form-input>
       </b-form-group>
-
       <b-form-group id="input-group-2" label="Пароль:" label-for="input-2">
         <b-form-input
           id="input-2"
@@ -22,7 +21,7 @@
           type="password"
           placeholder="Введите пароль"
           required
-        ></b-form-input>
+        />
       </b-form-group>
       <p class="error-message" v-if="error">Неверный логин или пароль!</p>
 
@@ -47,10 +46,12 @@ export default {
   },
   methods: {
     openNextPage () {
-      if ((this.form.email === 'vin@vin.com') && (this.form.password === '123')) {
+      const isCorrectEmail = this.form.email === 'vin@vin.com'
+      const isCorrectPassword = this.form.password === '123'
+      if (isCorrectEmail && isCorrectPassword) {
         this.$router.push('/dashboard')
       }
-      return this.error === true
+      this.error = true
     }
   }
 }
