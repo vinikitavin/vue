@@ -38,10 +38,21 @@ export default {
       return this.items.length
     }
   },
-  mounted () {
-    axios
-      .get(this.URL)
-      .then(response => (this.items = response.data).map((item) => delete item.userId))
+  async mounted () {
+    try {
+      this.getAxios = await axios.get(this.URL)
+      this.resultOfGetAxios = await this.getAxios.data
+      this.resultedArray = await this.resultOfGetAxios.map((item) => {
+        return {
+          id: item.id,
+          title: item.title,
+          body: item.body
+        }
+      })
+      this.items = this.resultedArray
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 </script>
