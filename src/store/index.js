@@ -5,13 +5,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isAuth: false
   },
   getters: {
+    getIsAuth: (state) => state.isAuth
   },
   mutations: {
+    setIsAuthMutation (state, payload) {
+      state.isAuth = payload
+    }
   },
   actions: {
-  },
-  modules: {
+    setIsAuth ({ commit }, payload) {
+      commit('setIsAuthMutation', payload)
+    }
   }
 })

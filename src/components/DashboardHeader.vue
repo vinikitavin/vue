@@ -10,11 +10,18 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'DashboardHeader.vue',
   methods: {
+    ...mapActions({
+      setIsAuth: 'setIsAuth'
+    }),
     returnToLoginPage () {
       this.$router.push('/login')
+      localStorage.setItem('isAuth', 'false')
+      this.setIsAuth(false)
     }
   }
 }

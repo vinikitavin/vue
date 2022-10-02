@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
   name: 'LoginForm',
@@ -44,6 +45,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      setIsAuth: 'setIsAuth'
+    }),
     openNextPage () {
       const [isCorrectEmail, isCorrectPassword] = [
         this.form.email === 'vin@vin.com',
@@ -51,6 +55,8 @@ export default {
       ]
       if (isCorrectEmail && isCorrectPassword) {
         this.$router.push('/dashboard')
+        localStorage.setItem('isAuth', 'true')
+        this.setIsAuth(true)
       }
       this.error = true
     }
@@ -67,13 +73,16 @@ form {
   padding: 40px;
   border: 2px solid black;
 }
+
 .form-group {
   margin-bottom: 20px;
 }
+
 .error-message {
   font-size: 15px;
   color: red;
 }
+
 .btn-danger {
   margin-right: 70px;
 }

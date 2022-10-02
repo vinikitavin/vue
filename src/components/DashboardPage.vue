@@ -1,7 +1,7 @@
 <template>
   <div>
-    <dashboard-header></dashboard-header>
-    <dashboard-table></dashboard-table>
+    <dashboard-header />
+    <dashboard-table />
   </div>
 </template>
 

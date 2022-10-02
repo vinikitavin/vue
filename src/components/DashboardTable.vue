@@ -1,27 +1,26 @@
 <template>
-  <div>
-    <div class="table-with-data">
-      <div class="overflow-auto">
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="rows"
-          :per-page="perPage"
-          aria-controls="my-table"
-        ></b-pagination>
-        <b-table
-          id="my-table"
-          :items="items"
-          :per-page="perPage"
-          :current-page="currentPage"
-          small
-        ></b-table>
-      </div>
+  <div class="table">
+    <div class="overflow-auto">
+      <b-table
+        id="my-table"
+        :items="items"
+        :per-page="perPage"
+        :current-page="currentPage"
+        small
+      />
+      <b-pagination
+        class="table__pagination"
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        aria-controls="my-table"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import api from '../api/axios'
 
 export default {
   name: 'DashboardTable',
@@ -29,7 +28,6 @@ export default {
     return {
       perPage: 3,
       currentPage: 1,
-      URL: 'https://jsonplaceholder.typicode.com/posts',
       items: []
     }
   },
@@ -40,16 +38,14 @@ export default {
   },
   async mounted () {
     try {
-      this.getAxios = await axios.get(this.URL)
-      this.resultOfGetAxios = await this.getAxios.data
-      this.resultedArray = await this.resultOfGetAxios.map((item) => {
+      const response = await api.get('posts')
+      this.items = response.map((item) => {
         return {
           id: item.id,
           title: item.title,
           body: item.body
         }
       })
-      this.items = this.resultedArray
     } catch (error) {
       console.log(error)
     }
@@ -57,8 +53,13 @@ export default {
 }
 </script>
 
-<style scoped>
-.table-with-data {
+<style lang="scss" scoped>
+.table {
   padding: 40px;
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>
