@@ -51,6 +51,8 @@ export default {
       ]
       if (isCorrectEmail && isCorrectPassword) {
         this.$router.push('/dashboard')
+        localStorage.setItem('isAuth', true)
+        this.$store.commit('changeIsAuthValue', true)
       }
       this.error = true
     }

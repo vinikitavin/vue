@@ -15,6 +15,8 @@ export default {
   methods: {
     returnToLoginPage () {
       this.$router.push('/login')
+      localStorage.setItem('isAuth', false)
+      this.$store.commit('changeIsAuthValue', false)
     }
   }
 }

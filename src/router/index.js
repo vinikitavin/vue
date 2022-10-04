@@ -6,6 +6,7 @@ import LoginForm from '@/components/LoginForm.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/', redirect: '/login' },
   { path: '/login', component: LoginForm },
   { path: '/dashboard', component: DashboardPage }
 ]
