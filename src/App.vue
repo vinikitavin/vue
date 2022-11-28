@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+    <RouterView/>
   </div>
 </template>
 
@@ -11,12 +11,12 @@ export default {
   store,
   created () {
     if (localStorage.getItem('isAuth') === 'true') {
-      this.$store.commit('changeIsAuthValue', true)
+      this.$store.dispatch('setIsAuthValue', true)
       if (this.$route.path !== '/dashboard') {
         return this.$router.push('/dashboard')
       }
     } else {
-      this.$store.commit('changeIsAuthValue', false)
+      this.$store.dispatch('setIsAuthValue', false)
       if (this.$route.path !== '/login') {
         return this.$router.push('/login')
       }
@@ -25,5 +25,5 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 </style>

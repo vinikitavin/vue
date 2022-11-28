@@ -11,12 +11,13 @@ export default new Vuex.Store({
     getIsAut: state => state.isAuth
   },
   mutations: {
-    changeIsAuthValue (state, payload) {
+    setIsAuthValue (state, payload) {
       state.isAuth = payload
     }
   },
   actions: {
-  },
-  modules: {
+    changeIsAuthValue (context, payload) {
+      context.commit('setIsAuthValue', payload)
+    }
   }
 })

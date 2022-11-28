@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <div class="table-with-data">
-      <div class="overflow-auto">
+  <div class="dashboard-table">
+    <div class="dashboard-table__data">
+      <div class="dashboard-table__content">
         <b-table
+          class="dashboard-table__table"
           id="my-table"
           :items="posts"
           :per-page="perPage"
@@ -10,6 +11,7 @@
           small
         />
         <b-pagination
+          class="dashboard-table__pagination"
           v-model="currentPage"
           :total-rows="rows"
           :per-page="perPage"
@@ -57,10 +59,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.table-with-data {
-  padding: 40px;
-}
-.pagination {
-  justify-content: center;
+.dashboard-table {
+  &__data {
+    padding: 40px;
+  }
+  &__pagination {
+    justify-content: center;
+  }
 }
 </style>

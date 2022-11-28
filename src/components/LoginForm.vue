@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <b-form @submit.prevent="">
+  <div class="login-form">
+    <b-form class="login-form__form">
       <b-form-group
+        class="login-form__email"
         id="input-group-1"
         label="Электронная почта:"
         label-for="input-1"
       >
         <b-form-input
+          class="login-form__email-input"
           id="input-1"
           v-model="form.email"
           type="email"
@@ -14,8 +16,14 @@
           required
         />
       </b-form-group>
-      <b-form-group id="input-group-2" label="Пароль:" label-for="input-2">
+      <b-form-group
+        class="login-form__password"
+        id="input-group-2"
+        label="Пароль:"
+        label-for="input-2"
+      >
         <b-form-input
+          class="login-form__password-input"
           id="input-2"
           v-model="form.password"
           type="password"
@@ -23,9 +31,9 @@
           required
         />
       </b-form-group>
-      <p class="error-message" v-if="error">Неверный логин или пароль!</p>
-      <b-button type="reset" variant="danger">Отмена</b-button>
-      <b-button type="submit" variant="primary" @click="openNextPage()">Войти</b-button>
+      <p class="login-form__error-message" v-if="error">Неверный логин или пароль!</p>
+      <b-button class="login-form__reset-btn" type="reset" variant="danger">Отмена</b-button>
+      <b-button class="login-form__apply-btn" type="submit" variant="primary" @click="openNextPage()">Войти</b-button>
     </b-form>
   </div>
 </template>
@@ -60,23 +68,27 @@ export default {
 }
 </script>
 
-<style scoped>
-form {
+<style lang="scss" scoped>
+.login-form {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 40px;
   border: 2px solid black;
-}
-.form-group {
-  margin-bottom: 20px;
-}
-.error-message {
-  font-size: 15px;
-  color: red;
-}
-.btn-danger {
-  margin-right: 70px;
+
+  &__email,
+  &__password {
+    margin-bottom: 20px;
+  }
+
+  &__error-message {
+    font-size: 15px;
+    color: red;
+  }
+
+  &__reset-btn {
+    margin-right: 70px;
+  }
 }
 </style>

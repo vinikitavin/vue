@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <dashboard-header></dashboard-header>
-    <dashboard-table></dashboard-table>
+  <div class="dashboard-page">
+    <DashboardHeader/>
+    <DashboardTable/>
   </div>
 </template>
 
@@ -17,5 +17,5 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>
